@@ -14,6 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/task', ['uses'=>'TaskController@index','as'=>'task.index'])->middleware('auth');
+Route::get('/task/create', ['uses'=>'TaskController@create','as'=>'task.create'])->middleware('auth');
+Route::post('/task/store', ['uses'=>'TaskController@store','as'=>'task.store'])->middleware('auth');
+Route::get('/task/{id}/edit', ['uses'=>'TaskController@edit','as'=>'task.edit'])->middleware('auth');
+Route::put('/task/{id}/update', ['uses'=>'TaskController@update','as'=>'task.update'])->middleware('auth');
+Route::get('/task/{id}/show', ['uses'=>'TaskController@show','as'=>'task.show'])->middleware('auth');
+Route::delete('/task/{id}/delete', ['uses'=>'TaskController@destroy','as'=>'task.destroy'])->middleware('auth');
+
 
 Auth::routes();
 
